@@ -1,0 +1,56 @@
+version: "2"
+
+x-container: &container
+  image: vognev/alog:develop
+  volumes:
+    - .:/var/www/html:cached
+  env_file:
+    - .env
+  depends_on:
+    mysql:
+      condition: service_healthy
+
+x-environment: &environment
+  PHP_OPCACHE_VALIDATE_TIMESTAMPS: 1
+  XDEBUG_START_WITH_REQUEST: trigger
+  PHP_IDE_CONFIG: serverName=alog
+
+services:
+  alog:
+    <<: *container
+    environment:
+      <<: *environment
+      XDEBUG_MODE: debug
+      XDEBUG_CLIENT_PORT: 9003
+      XDEBUG_DISCOVER_CLIENT_HOST: "on"
+    build:
+      context: .
+      dockerfile: .docker/alog/Dockerfile
+      target: develop
+      args:
+        - USER_UID=${USER_UID:-1000}
+        - USER_GID=${USER_GID:-1000}
+
+  mysql:
+    image: mysql/mysql-server:8.0
+    command: >-
+      --performance-schema=OFF
+      --innodb_flush_log_at_trx_commit=2
+      --skip-mysqlx
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql:delegated
+    tmpfs:
+      - /tmp
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE:-database}
+      MYSQL_USER: ${DB_USERNAME:-database}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-database}
+    healthcheck:
+      test: "/bin/bash -c '</dev/tcp/localhost/3306'"
+
+volumes:
+  mysql:
+    driver: local
