@@ -38,7 +38,7 @@ services:
       --innodb_flush_log_at_trx_commit=2
       --skip-mysqlx
     ports:
-      - "127.0.0.1:3306:3306"
+      - "127.0.0.3:3306:3306"
     volumes:
       - mysql:/var/lib/mysql:delegated
     tmpfs:

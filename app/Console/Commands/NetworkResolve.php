@@ -3,14 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Models\Network;
-use App\Services\Whois;
+use App\Services\Geoip;
 use Illuminate\Console\Command;
 
 class NetworkResolve extends Command
 {
     protected $signature = 'network:resolve {addr : IP Address}';
 
-    public function handle(Whois $whois)
+    public function handle(Geoip $geoip)
     {
         $addr = $this->argument('addr');
 
@@ -21,7 +21,7 @@ class NetworkResolve extends Command
             return self::SUCCESS;
         }
 
-        $data = $whois->lookup($addr);
+        $data = $geoip->lookup($addr);
 
         if (is_null($data) || ! count($data['cidrs'])) {
             $this->error('No networks found');

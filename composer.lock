@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a429ab1ee10343117837e8a3337f68e0",
+    "content-hash": "192f60d704327374d4f166e5d7e16e55",
     "packages": [
         {
             "name": "brick/math",
@@ -2147,6 +2147,71 @@
             "time": "2021-09-28T15:47:34+00:00"
         },
         {
+            "name": "maxmind-db/reader",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxmind/MaxMind-DB-Reader-php.git",
+                "reference": "b1f3c0699525336d09cc5161a2861268d9f2ae5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxmind/MaxMind-DB-Reader-php/zipball/b1f3c0699525336d09cc5161a2861268d9f2ae5b",
+                "reference": "b1f3c0699525336d09cc5161a2861268d9f2ae5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "conflict": {
+                "ext-maxminddb": "<1.10.1,>=2.0.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "3.*",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpstan/phpstan": "*",
+                "phpunit/phpcov": ">=6.0.0",
+                "phpunit/phpunit": ">=8.0.0,<10.0.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "suggest": {
+                "ext-bcmath": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
+                "ext-gmp": "bcmath or gmp is required for decoding larger integers with the pure PHP decoder",
+                "ext-maxminddb": "A C-based database decoder that provides significantly faster lookups"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MaxMind\\Db\\": "src/MaxMind/Db"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Gregory J. Oschwald",
+                    "email": "goschwald@maxmind.com",
+                    "homepage": "https://www.maxmind.com/"
+                }
+            ],
+            "description": "MaxMind DB Reader API",
+            "homepage": "https://github.com/maxmind/MaxMind-DB-Reader-php",
+            "keywords": [
+                "database",
+                "geoip",
+                "geoip2",
+                "geolocation",
+                "maxmind"
+            ],
+            "support": {
+                "issues": "https://github.com/maxmind/MaxMind-DB-Reader-php/issues",
+                "source": "https://github.com/maxmind/MaxMind-DB-Reader-php/tree/v1.11.0"
+            },
+            "time": "2021-10-18T15:23:10+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.3.5",
             "source": {
@@ -2445,91 +2510,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.1"
             },
             "time": "2021-11-03T20:52:16+00:00"
-        },
-        {
-            "name": "novutec/domainparser",
-            "version": "v2.0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/3name/DomainParser.git",
-                "reference": "d33171d9c8e8ca754ec40dd87fbb75af47c58617"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/3name/DomainParser/zipball/d33171d9c8e8ca754ec40dd87fbb75af47c58617",
-                "reference": "d33171d9c8e8ca754ec40dd87fbb75af47c58617",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "ext-pcre": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Novutec\\DomainParser\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Novutec Inc."
-                }
-            ],
-            "description": "A domain name parser to parse and to validate a domain name.",
-            "homepage": "https://github.com/3name/DomainParser/",
-            "keywords": [
-                "domain",
-                "domainparser",
-                "php"
-            ],
-            "support": {
-                "source": "https://github.com/3name/DomainParser/tree/v2.0.11"
-            },
-            "time": "2021-08-13T22:36:26+00:00"
-        },
-        {
-            "name": "novutec/whoisparser",
-            "version": "v3.2.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/3name/WhoisParser.git",
-                "reference": "50981adfe18cb884e03ee3ae8dbb04888a65d17f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/3name/WhoisParser/zipball/50981adfe18cb884e03ee3ae8dbb04888a65d17f",
-                "reference": "50981adfe18cb884e03ee3ae8dbb04888a65d17f",
-                "shasum": ""
-            },
-            "require": {
-                "novutec/domainparser": ">=2.0.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Novutec\\WhoisParser\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Lookup domain names, IP addresses and AS numbers by WHOIS.",
-            "homepage": "https://github.com/3name/WhoisParser/",
-            "keywords": [
-                "php",
-                "whois",
-                "whoisparser"
-            ],
-            "support": {
-                "source": "https://github.com/3name/WhoisParser/tree/v3.2.13"
-            },
-            "time": "2021-08-13T23:39:37+00:00"
         },
         {
             "name": "opis/closure",

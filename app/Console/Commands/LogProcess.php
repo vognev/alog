@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use App\Models\Entry;
 use App\Models\Log;
 use App\Models\Network;
-use App\Services\Whois;
+use App\Services\Geoip;
 use Illuminate\Console\Command;
 
 class LogProcess extends Command
 {
     protected $signature = 'log:process {id : Log ID}';
 
-    public function handle(Whois $whois)
+    public function handle(Geoip $geoip)
     {
         /** @var Log $log */
         $log = Log::query()->findOrFail($this->argument('id'));
@@ -27,7 +27,7 @@ class LogProcess extends Command
 
             if (! $network) {
                 $this->info("Looking for {$entry->host}");
-                $data = $whois->lookup($entry->host);
+                $data = $geoip->lookup($entry->host);
 
                 if (! $data || !count($data['cidrs']) || !count($data['names'])) {
                     $this->warn("No network for {$entry->host}");
